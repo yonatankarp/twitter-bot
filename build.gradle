@@ -1,8 +1,13 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
 }
 
-group 'org.example'
+jar {
+    manifest { attributes('Main-Class': 'com.example.TwitterBot') }
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+group 'org.com.example'
 version '1.0-SNAPSHOT'
 
 repositories {
